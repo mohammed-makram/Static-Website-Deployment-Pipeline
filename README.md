@@ -114,4 +114,4 @@ If you encounter issues:
 3. Restart deployment: `./deploy.sh`
 
 ---
-**Made with ❤️ for learning DevOps**
+
