@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Pipeline Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1> DevOps Pipeline</h1>
+            <p>Static Website Deployment Demo</p>
+        </header>
+        
+        <main>
+            <div class="card">
+                <h2> Docker</h2>
+                <p>Website containerized and ready to deploy</p>
+            </div>
+            
+            <div class="card">
+                <h2> Kubernetes</h2>
+                <p>Orchestrating containers with ease</p>
+            </div>
+            
+            <div class="card">
+                <h2> Jenkins</h2>
+                <p>Continuous Integration  Deployment</p>
+            </div>
+            
+            <div class="card">
+                <h2> Ansible</h2>
+                <p>Infrastructure as Code automation</p>
+            </div>
+        </main>
+        
+        <footer>
+            <p> Pipeline Status: <span class="status">Active</span></p>
+            <p> Last Deploy: <span id="timestamp"></span></p>
+        </footer>
+    </div>
+    
+    <script>
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        
+        // Add some interactivity
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.style.transform = card.style.transform === 'scale(1.05)' ? 'scale(1)' : 'scale(1.05)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+---
+- name: Setup DevOps Environment
+  hosts: localhost
+  become: yes
+  
+  tasks:
+    - name: Update system packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+      
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+        
+    - name: Start and enable Docker
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+        
+    - name: Add user to docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+        
+    - name: Install Java for Jenkins
+      apt:
+        name: openjdk-11-jdk
+        state: present
+        
+    - name: Install Ansible
+      apt:
+        name: ansible
+        state: present
+        
+    - name: Create app directory
+      file:
+        path: /opt/website
+        state: directory
+        mode: '0755'
+        
+    - name: Display completion message
+      debug:
+        msg: "DevOps environment setup complete! "
